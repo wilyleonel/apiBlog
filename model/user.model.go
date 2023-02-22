@@ -43,6 +43,11 @@ func (user *User) ValidUser(action string) error {
 			return errors.New("empty password field")
 		}
 		return nil
+	case "update":
+		if user.Password == "" {
+			return errors.New("empty password field")
+		}
+		return nil
 	default:
 		if user.Email == "" {
 			return errors.New("empty Email field")
@@ -59,10 +64,11 @@ func Delete() {
 	database.DB.Exec(`drop table profiles`)
 	database.DB.Exec(`drop table posts cascade`)
 	database.DB.Exec(`drop table comments`)
+	database.DB.Exec(`drop table post_categories`)
 	database.DB.Exec(`drop table categories`)
 }
 
 func Migration() {
 	database.DB.AutoMigrate(&User{}, &Category{},
-		&Comment{}, &Post{}, &Profile{})
+		&Comment{}, &Post{}, &Profile{},&Like{})
 }

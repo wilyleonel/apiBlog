@@ -80,7 +80,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(err.Error()))
 		return
 	}
-	err = user.ValidUser("create")
+	err = user.ValidUser("update")
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return

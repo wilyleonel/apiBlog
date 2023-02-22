@@ -60,13 +60,8 @@ func Create(user *model.User, err error) error {
 }
 
 func Update(user model.User, id int) (err error) {
+	database.DB.Model(&user).Select("password").Updates("password")
 	database.DB.Where("id=?", id).Updates(&user)
-	// database.DB.Where("id=?",id).UpdateColumns(
-	// 	map[string]interface{}{
-	// 		"password":&user.Password,
-	// 		"email":&user.Email,
-	// 	},
-	// )
 	return nil
 }
 

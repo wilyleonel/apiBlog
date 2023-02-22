@@ -16,7 +16,7 @@ func GetAllPost(limit1,offset1 int) ([]model.Post, error) {
 }
 // func GetAllPost() ([]model.Post, error) {
 // 	var post []model.Post
-// 	database.DB.Scopes(Pagination(r)).Order("id desc").Table("posts").Scan(&post)
+// 	database.DB.Order("id desc").Table("posts").Scan(&post)
 // 	return post, nil
 // }
 
@@ -25,6 +25,7 @@ func GetPost(id int) (model.Post, error) {
 	database.DB.Table("posts").First(&post, id)
 	database.DB.Model(&post).Association("Comment").Find(&post.Comment)
 	database.DB.Model(&post).Association("Category").Find(&post.Categories)
+	database.DB.Model(&post).Association("Like").Find(&post.Like)
 	return post, nil
 }
 

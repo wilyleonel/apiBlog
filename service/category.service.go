@@ -8,7 +8,7 @@ import (
 func GetCategory() ([]model.Category, error) {
 	var Category []model.Category
 	// var count int64
-	database.DB.Table("categories").Scan(&Category)
+	database.DB.Find(&Category)
 	// database.DB.Model("posts").Association()
 	return Category, nil
 }
@@ -21,5 +21,6 @@ func CreateCategory(category *model.Category,err error)error{
 func DeleteCategory(id int)(model.Category,error){
 	var category model.Category
 	database.DB.First(&category,id)
+	database.DB.Scopes().Delete(&category,id)
 	return category,nil
 }

@@ -49,11 +49,19 @@ func Category() {
 	database.DB.Create(&category)
 	database.DB.Create(&category1)
 }
+
+func Like(){
+	like:=model.Like{UserId: 1,PostId: 1,CommentId: 1}
+	like1:=model.Like{UserId: 2,PostId: 2,CommentId: 2}
+	database.DB.Create(&like)
+	database.DB.Create(&like1)
+}
 func Seed() {
 	User()
 	Profile()
 	Post()
 	Comment()
 	Category()
+	Like()
 	fmt.Println("las semillas fueron sembradas correctamente")
 }
