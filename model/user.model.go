@@ -23,10 +23,11 @@ type Token struct {
 }
 
 type User struct {
-	Id        uint      `gorm:"primaryKey"`
-	Email     string    `gorm:"unique:true not null:true" json:"email"`
-	Password  string    `gorm:"not null:true" json:"password"`
-	Profile   Profile   `gorm:"constraint:OnDelete:CASCADE;"`
+	Id       uint   `gorm:"primaryKey"`
+	Email    string `gorm:"unique:true not null:true" json:"email"`
+	Password string `gorm:"not null:true" json:"password"`
+	Profile  Profile
+	// Profile   Profile   `gorm:"constraint:OnDelete:CASCADE;"`
 	Post      []Post    `gorm:"constraint:OnDelete:CASCADE;"`
 	Comment   []Comment `gorm:"constraint:OnDelete:CASCADE;"`
 	Like      []Like    `gorm:"constraint:OnDelete:CASCADE;"`
@@ -63,12 +64,12 @@ func Delete() {
 	database.DB.Exec(`drop table users cascade`)
 	database.DB.Exec(`drop table profiles`)
 	database.DB.Exec(`drop table posts cascade`)
-	database.DB.Exec(`drop table comments`)
+	database.DB.Exec(`drop table comments cascade`)
 	database.DB.Exec(`drop table post_categories`)
-	database.DB.Exec(`drop table categories`)
+	database.DB.Exec(`drop table categories cascade`)
 }
 
 func Migration() {
-	database.DB.AutoMigrate(&User{}, &Category{},
-		&Comment{}, &Post{}, &Profile{},&Like{})
+	database.DB.AutoMigrate(&User{},&Profile{}, &Category{},
+		&Comment{}, &Post{}, &Like{})
 }

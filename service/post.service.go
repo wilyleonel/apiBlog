@@ -24,7 +24,7 @@ func GetPost(id int) (model.Post, error) {
 	var post model.Post
 	database.DB.Table("posts").First(&post, id)
 	database.DB.Model(&post).Association("Comment").Find(&post.Comment)
-	database.DB.Model(&post).Association("Category").Find(&post.Categories)
+	database.DB.Model(&post).Association("Categories").Find(&post.Categories)
 	database.DB.Model(&post).Association("Like").Find(&post.Like)
 	return post, nil
 }

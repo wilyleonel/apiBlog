@@ -2,19 +2,17 @@ package model
 
 import (
 	"errors"
-	"gorm.io/gorm"
 	"strings"
 )
 
 type Profile struct {
-	Id        uint   `gorm:"primaryKey" `
-	Name      string `gorm:"not null:true" json:"name"`
-	LastName  string `gorm:"not null:true" json:"lastname"`
-	Address   string `json:"address"`
-	Img       string `json:"img"`
-	Age       int    `json:"age"`
+	Id       uint   `gorm:"primaryKey" `
+	Name     string `gorm:"not null:true" json:"name"`
+	LastName string `gorm:"not null:true" json:"lastname"`
+	Address  string `json:"address"`
+	Img      string `json:"img"`
+	Age      int    `json:"age"`
 	UserId    uint
-	DeletedAt gorm.DeletedAt
 }
 
 func (profile *Profile) ValidProfile(action string) error {

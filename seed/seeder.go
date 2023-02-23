@@ -34,10 +34,10 @@ func Post() {
 }
 
 func Comment() {
-	comment := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1,UserId: 1}
-	comment2 := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1,UserId: 4}
-	comment3 := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1,UserId: 3}
-	comment1 := model.Comment{Description: "Esto es una publicacion del post 2", PostId: 2,UserId: 2}
+	comment := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1, UserId: 1}
+	comment2 := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1, UserId: 4}
+	comment3 := model.Comment{Description: "Esto es un comentario del post 1", PostId: 1, UserId: 3}
+	comment1 := model.Comment{Description: "Esto es una publicacion del post 2", PostId: 2, UserId: 2}
 	database.DB.Create(&comment)
 	database.DB.Create(&comment1)
 	database.DB.Create(&comment2)
@@ -50,9 +50,9 @@ func Category() {
 	database.DB.Create(&category1)
 }
 
-func Like(){
-	like:=model.Like{UserId: 1,PostId: 1,CommentId: 1}
-	like1:=model.Like{UserId: 2,PostId: 2,CommentId: 2}
+func Like() {
+	like := model.Like{UserId: 1, PostId: 1,CommentId: 1}
+	like1 := model.Like{UserId: 2, PostId: 2,CommentId: 2}
 	database.DB.Create(&like)
 	database.DB.Create(&like1)
 }

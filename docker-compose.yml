@@ -1,0 +1,25 @@
+# version: '3.8'
+
+# services:
+#   db:
+#     image: postgres:15.2-alpine
+#     ports:
+#       - 5432:5432
+#     restart: always
+#     environment:
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_USER: postgres
+#       POSTGRES_DB: postgres
+#   api:
+#     build: .
+#     # constainer:name: "blog"
+#     environment:
+#       DB_USERNAME: "postgres"
+#       DB_PASSWORD: "postgres"
+#       DB_DB: "postgres"
+#       DB_HOST: "db"
+#       DB_TABLE: "postgres"
+#       DB_PORT: 5432
+#       # ports:
+#       # - "8080:8080"
+
